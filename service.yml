@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: nodejs-service
+ labels:
+  author: saikiran
+  type: nodejs
+spec:
+ type: LoadBalancer
+ ports:
+  - port: 49154
+    targetPort: 3000
+ selector:
+  type: nodejs
+

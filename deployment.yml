@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nodejs-pod
+ labels:
+  author: saikiran
+  type: nodejs
+spec:
+ replicas: 3
+ selector:
+  matchLabels:
+   type: nodejs
+ template:
+  metadata:
+   name: nodejs
+   labels:
+    author: saikiran
+    type: nodejs
+  spec:
+   containers:
+    - name: nodejs
+      image: saikiran42/mynode
+      ports:
+       - containerPort: 3000
+         hostPort: 49154
+      resources:
+       requests:
+        cpu: 500m
+        memory: 256Mi
+       limits:
+        cpu: 1000m
+        memory: 512Mi
